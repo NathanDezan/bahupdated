@@ -1,3 +1,4 @@
+from src.utils.ParserXML import XMLParser
 import urllib, urllib.request
 
 class Arxiv():
@@ -11,25 +12,18 @@ class Arxiv():
         return f'{self.url}?search_query={self.query}&start=0&max_results={self.max_results}'
     
     def search(self):
-        print(self.maker_url())
-        data = urllib.request.urlopen(self.maker_url())
-        print(data.read().decode('utf-8'))
-        # if response.status_code == 200:
-        #     return response.json()
-        # else:
-        #     return None
+        try:
+            data = urllib.request.urlopen(self.maker_url())
+
+            return data.read().decode('utf-8')
+        except Exception as e:
+            return None
 
     def get_papers(self):
-        papers = []
-        response = self.search()
-        if response:
-            for entry in response['entries']:
-                paper = {
-                    'title': entry['title'],
-                    'authors': entry['authors'],
-                    'summary': entry['summary'],
-                    'published': entry['published'],
-                    'link': entry['link']
-                }
-                papers.append(paper)
-        return papers[:self.max_results]
+        try:
+            response = self.search()
+            xml_parser = XMLParser(response).extract_xml_data()
+
+            return xml_parser
+        except Exception as e:
+            return None

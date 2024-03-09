@@ -1,1 +1,10 @@
 # bahupdated
+
+
+ARXIV_URL = <>
+ARXIV_MAX_RESULTS = <>
+NOTION_TOKEN = <>
+NOTION_DATABASE_ID = <>
+OPENAI_API_KEY = <>
+
+Python 3.10.12

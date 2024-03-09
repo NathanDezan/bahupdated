@@ -1,0 +1,22 @@
+{
+   "parent": { "database_id": "" },
+   "icon": { "emoji": "" },
+   "cover": { "external": { "url": "" } },
+   "properties": {
+       "Title": {},
+       "Category": {
+           "multi_select": []
+       },
+       "ID": {
+           "rich_text": []
+       },
+       "PDF": {
+           "rich_text": []
+       },
+       "Published": {},
+       "Authors": { 
+           "multi_select": []
+       },
+       "Created At": {}
+   }
+}
